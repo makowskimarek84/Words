@@ -1,0 +1,48 @@
+{% extends '::base.html.twig' %}
+{% block javascripts %}
+    {{ parent() }}
+   <script src="{{ asset('js/game.js') }}"></script>
+   <script src="{{ asset('js/menu.js') }}"></script>
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/game.css') }}" rel="stylesheet" />
+{% endblock %}
+{% block body %}
+    
+    {% include 'AppBundle::menu.html.twig' with {'active': 'game'} %} 
+    
+    <div id="word" class="center"></div>
+    <div id="instruction" class="clear center">Ułóź jak najwięcej słów z liter powyższego słowa. <br />Swoje propozycje wprowadzaj poniżej, wciskając enter po każdym słowie.</div>
+    <div id="form" class="center"><input type="text" id="word_input" class="form-control"></input></div>
+    <div id="communication" class="center text-danger"></div>
+    
+    <div id="summary" class="center">Ułożone słowa: <span id="summary_number">0</span></div>
+    <div id="words_list"></div>
+    
+    
+    
+    
+<!-- Modal -->
+<div class="modal fade" id="saveScoreModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Zapisz wynik i zakończ grę</h4>
+      </div>
+      <div class="modal-body">
+            <form id="save_score_form" method="post" action="/score">
+                <label>Imię</label><input type="text" id="nickname" class="form-control"></input>
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Graj dalej</button>
+        <button type="button" id="save_score_button" class="btn btn-primary">Zapisz i zakończ</button>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+{% endblock %}

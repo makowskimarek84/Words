@@ -1,0 +1,22 @@
+{% block menu %}
+    <div id="menu" class="center">
+        <button type="button" id="menu_score" class="figure {% if active == 'scores' %}active{%endif%}">
+                Tablica wyników
+        </button>
+        {% if active == 'game' %}
+            <button type="button" class="figure" id="save_score" data-toggle="modal" data-target="#saveScoreModal">
+                Zapisz wynik
+            </button>
+        {% endif %}
+        <button type="button" id="menu_new_game" class="figure">
+                Nowa gra
+        </button>
+        <button type="button" class="figure" data-toggle="modal" data-target="#gameRulesModal">
+                Zasady gry
+        </button>
+    </div>
+{% endblock menu %}  
+
+{% block body %}
+    {% include 'AppBundle::rules.html.twig' %} 
+{% endblock body %} 

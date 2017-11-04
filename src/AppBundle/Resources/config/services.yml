@@ -1,0 +1,59 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/service_container.html
+parameters:
+    dictionary.entity: "AppBundle:Dictionary"
+    score.entity: "AppBundle:Score"
+    
+services:
+    
+    game:
+        class: AppBundle\Services\WordStackingGame
+        arguments: 
+            - "@dictionary.finder"
+            - "@gameplay"
+    
+    gameplay:
+        class: AppBundle\Services\WordStackingGameplay
+        arguments: 
+            - "@dictionary.repository"
+            - "@session"
+    
+    dictionary:
+        class: AppBundle\Services\Dictionary
+        arguments: 
+            - "@dictionary.repository"
+            
+    dictionary.finder:
+        class: AppBundle\Services\DictionaryFinder
+        arguments: 
+            - "@dictionary.repository"
+        
+    dictionary.repository:
+        class: AppBundle\Repository\DictionaryRepository
+        factory: ["@doctrine", getRepository]
+        arguments:
+            - %dictionary.entity%
+            
+    score.saver:
+        class: AppBundle\Services\ScoreSaver
+        arguments: 
+            - "@score.repository"
+            - "@gameplay"
+            
+    score.finder:
+        class: AppBundle\Services\ScoreFinder
+        arguments: 
+            - "@score.repository"
+            
+    score.repository:
+        class: AppBundle\Repository\ScoreRepository
+        factory: ["@doctrine", getRepository]
+        arguments:
+            - %score.entity%
+            
+    app.exception_listener:
+        class: AppBundle\Listener\ExceptionListener
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }
+
+            

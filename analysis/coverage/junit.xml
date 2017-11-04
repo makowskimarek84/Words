@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Project Test Suite" tests="6" assertions="17" errors="0" failures="0" skipped="0" time="0.003491">
+    <testsuite name="Tests\AppBundle\Controller\WordStackingGameTest" file="/home/programista/docker-php7apache/www/Words/tests/AppBundle/Services/WordStackingGameTest.php" tests="6" assertions="17" errors="0" failures="0" skipped="0" time="0.003491">
+      <testcase name="testStartWillReturnChallengeWordWhenChallengeIsSet" class="Tests\AppBundle\Controller\WordStackingGameTest" classname="Tests.AppBundle.Controller.WordStackingGameTest" file="/home/programista/docker-php7apache/www/Words/tests/AppBundle/Services/WordStackingGameTest.php" line="29" assertions="3" time="0.002621"/>
+      <testcase name="testStartWillReturnRandomWordWhenChallengeIsNotSet" class="Tests\AppBundle\Controller\WordStackingGameTest" classname="Tests.AppBundle.Controller.WordStackingGameTest" file="/home/programista/docker-php7apache/www/Words/tests/AppBundle/Services/WordStackingGameTest.php" line="39" assertions="3" time="0.000147"/>
+      <testcase name="testCheckWillThrowExceptionWhenWordDoesNotExists" class="Tests\AppBundle\Controller\WordStackingGameTest" classname="Tests.AppBundle.Controller.WordStackingGameTest" file="/home/programista/docker-php7apache/www/Words/tests/AppBundle/Services/WordStackingGameTest.php" line="49" assertions="2" time="0.000148"/>
+      <testcase name="testCheckWillThrowExceptionWhenWordWasUseBefore" class="Tests\AppBundle\Controller\WordStackingGameTest" classname="Tests.AppBundle.Controller.WordStackingGameTest" file="/home/programista/docker-php7apache/www/Words/tests/AppBundle/Services/WordStackingGameTest.php" line="57" assertions="3" time="0.000293"/>
+      <testcase name="testCheckWillThrowExceptionWhenWordDoesNotSuitPattern" class="Tests\AppBundle\Controller\WordStackingGameTest" classname="Tests.AppBundle.Controller.WordStackingGameTest" file="/home/programista/docker-php7apache/www/Words/tests/AppBundle/Services/WordStackingGameTest.php" line="67" assertions="3" time="0.000148"/>
+      <testcase name="testCheckWillReturnWordWhenWordIsCorrect" class="Tests\AppBundle\Controller\WordStackingGameTest" classname="Tests.AppBundle.Controller.WordStackingGameTest" file="/home/programista/docker-php7apache/www/Words/tests/AppBundle/Services/WordStackingGameTest.php" line="76" assertions="3" time="0.000134"/>
+    </testsuite>
+  </testsuite>
+</testsuites>

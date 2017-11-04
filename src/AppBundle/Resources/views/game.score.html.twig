@@ -1,0 +1,41 @@
+{% extends '::base.html.twig' %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/menu.js') }}"></script>
+    <script src="{{ asset('js/scores.js') }}"></script>
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/game.css') }}" rel="stylesheet" />
+{% endblock %}
+{% block body %}
+
+    {% include 'AppBundle::menu.html.twig' with {'active': 'scores'} %} 
+    
+    <div class="center" id="scores">
+        <table class="table table-striped figure"> 
+            <thead> 
+                <tr> 
+                    <th>Słowo</th> 
+                    <th>Najlepszy wynik</th> 
+                    <th>Wyników</th> 
+                    <th></th> 
+                </tr> 
+            </thead> 
+            <tbody>
+                {% for word in scores %}
+                    <tr> 
+                        <td>{{ word.word }}</td>
+                        <td>{{ word.topScore }} - {{ word.nickname }}</td>
+                        <td>{{ word.scores }}</td>
+                        <td>
+                            <button class="show_scores btn btn-default" data-word-id="{{ word.id }}">Zobacz wyniki</button>
+                            <button class="take_challenge btn btn-default" data-word-id="{{ word.id }}">Podejmij wyzwanie</button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody> 
+        </table>
+    </div>
+    
+{% endblock %}
