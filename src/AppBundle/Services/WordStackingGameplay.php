@@ -5,7 +5,6 @@ namespace AppBundle\Services;
 
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use AppBundle\Entity\Dictionary;
-use AppBundle\Repository\DictionaryRepository;
 
 /**
  * Class WordStackingGameplay
@@ -18,20 +17,21 @@ class WordStackingGameplay
      * @var SessionInterface
      */
     private $session;
+
     /**
-     * @var DictionaryRepository
+     * @var DictionaryFinder
      */
-    private $dictionaryRepository;
+    private $dictionaryFinder;
 
     /**
      * WordStackingGameplay constructor.
-     * @param DictionaryRepository $dictionaryRepository
+     * @param DictionaryFinder $dictionaryFinder
      * @param SessionInterface $session
      */
-    public function __construct(DictionaryRepository $dictionaryRepository, SessionInterface $session)
+    public function __construct(DictionaryFinder $dictionaryFinder, SessionInterface $session)
     {
         $this->session = $session;
-        $this->dictionaryRepository = $dictionaryRepository;
+        $this->dictionaryFinder = $dictionaryFinder;
     }
 
     /**
@@ -54,7 +54,7 @@ class WordStackingGameplay
         if (!$this->session->has('word.id')) {
             return null;
         }
-        return $this->dictionaryRepository->find($this->session->get('word.id'));
+        return $this->dictionaryFinder->findById((int)$this->session->get('word.id'));
     }
 
     /**

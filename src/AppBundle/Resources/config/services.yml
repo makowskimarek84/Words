@@ -15,7 +15,7 @@ services:
     gameplay:
         class: AppBundle\Services\WordStackingGameplay
         arguments: 
-            - "@dictionary.repository"
+            - "@dictionary.finder"
             - "@session"
     
     dictionary:
